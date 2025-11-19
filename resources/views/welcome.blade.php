@@ -6,6 +6,11 @@
     <title>Concertix – Pemesanan Tiket Konser</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         body {
@@ -32,11 +37,11 @@
             <a href="#" class="hover:text-indigo-300 transition">Singers</a>
         </nav>
 
-        <!-- CENTER: Logo -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
-            <img src="/logo/ticket-icon.svg" alt="logo" class="w-8 h-8">
-            <span class="text-3xl font-bold tracking-widest">TICKETER</span>
-        </div>
+       <!-- CENTER: Logo -->
+<div class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
+    <img src="{{ asset('logo/header.png') }}" alt="logo" class="h-12">
+</div>
+
 
         <!-- RIGHT: Cart + Login + Register -->
         <div class="flex items-center space-x-4">
@@ -55,7 +60,7 @@
             @guest
                 <!-- LOGIN -->
                 <a href="{{ route('login') }}"
-                    class="flex items-center space-x-2 bg-white text-indigo-700 px-5 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+                    class="flex items-center space-x-2 bg-white text-indigo-700 px-5 py-2 rounded-3xl font-semibold hover:bg-gray-100 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                          stroke-width="1.7" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -67,7 +72,7 @@
 
                 <!-- REGISTER -->
                 <a href="{{ route('register') }}"
-                    class="flex items-center space-x-2 bg-indigo-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-700 transition">
+                    class="flex items-center space-x-2 bg-indigo-600 text-white px-5 py-2 rounded-3xl font-semibold hover:bg-indigo-700 transition">
                     <span>Register</span>
                 </a>
             @else
@@ -102,19 +107,19 @@
 
                 <!-- Slide 1 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=2000&q=80"
+                    <img src="https://assets.artatix.co.id/event/5733F6KNY0.png"
                          class="w-full h-[430px] object-cover rounded-3xl" />
                 </div>
 
                 <!-- Slide 2 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=2000&q=80"
+                    <img src="https://staticassets.kiostix.com/banner/1763438823733_1761539197585_sigma.png"
                          class="w-full h-[430px] object-cover rounded-3xl" />
                 </div>
 
                 <!-- Slide 3 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=2000&q=80"
+                    <img src="	https://assets.artatix.co.id/event/event_6896f7c6e7526.jpg"
                          class="w-full h-[430px] object-cover rounded-3xl" />
                 </div>
 
@@ -135,11 +140,11 @@
 </section>
 
 <!-- HERO SEARCH SECTION -->
-<section class="w-full bg-gradient-to-b from-[#0a0c38] to-[#080a2c] py-10">
+<section class="w-full bg-gradient-to-b py-10">
     <div class="max-w-4xl mx-auto px-6">
 
         <!-- Search Box -->
-        <div class="bg-white rounded-full shadow-lg flex items-center px-6 py-4 space-x-4">
+        <div class="bg-white rounded-3xl shadow-lg flex items-center px-6 py-4 space-x-4">
 
             <!-- Search Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-gray-400" fill="none" 
@@ -150,8 +155,8 @@
 
             <!-- Input -->
             <input 
-                type="text" 
-                placeholder="Cari event dan atraksi di sini ..."
+                type="" 
+                placeholder="Cari concert ..."
                 class="w-full bg-transparent focus:outline-none text-lg text-gray-700 placeholder-gray-400"
             >
         </div>
@@ -159,68 +164,186 @@
     </div>
 </section>
 
+<!-- EVENT TERBARU SECTION -->
+<section class="w-full bg-white py-14">
+    <div class="max-w-7xl mx-auto px-6">
 
-
-
-
-
-<section class="concert-slider">
-  <!-- Cards with singer images, name, date, and button -->
-</section>
-
-<section class="our-benefits">
-  <!-- Icon + description items -->
-</section>
-
-<section class="time-running-out">
-  <!-- Another slider with concerts -->
-</section>
-
-<section class="steps">
-  <!-- 4 steps/icons -->
-</section>
-
-<section class="upcoming-concerts">
-  <!-- Grid of upcoming concert cards -->
-</section>
-
-
-
-<section class="testimonials">
-  <!-- Carousel of reviews -->
-</section>
-
-<section class="faq">
-  <!-- Accordion FAQ -->
-</section>
-
-<footer>
-  <!-- Footer content -->
-</footer>
-
-
-    <!-- Info Cards -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">Mengapa Memilih Concertix?</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">Mudah & Cepat</h3>
-                    <p class="text-gray-600">Proses pemesanan hanya dalam 3 langkah. Tiket langsung dikirim ke emailmu.</p>
-                </div>
-                <div class="p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">Event Terlengkap</h3>
-                    <p class="text-gray-600">Ratusan event konser dari berbagai genre, selalu update setiap minggu.</p>
-                </div>
-                <div class="p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">Aman & Terpercaya</h3>
-                    <p class="text-gray-600">Pembayaran aman, tiket 100% garansi asli, dan layanan pelanggan 24/7.</p>
-                </div>
-            </div>
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-3xl font-bold text-gray-900">Event Terbaru</h2>
+            <a href="#" class="text-indigo-600 font-semibold hover:underline">Lihat semua</a>
         </div>
-    </section>
+
+        <!-- Event List -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+            <!-- CARD 1 -->
+            <div class="border rounded-xl shadow hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=900&q=80"
+                     class="w-full h-56 object-cover rounded-t-xl" />
+
+                <div class="p-4">
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📍 Jakarta Timur</span>
+                    </div>
+
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📅 24 Jan 26</span>
+                    </div>
+
+                    <h3 class="mt-2 text-lg font-semibold">FREEDOM EXODUS</h3>
+
+                    <p class="text-sm mt-2 text-gray-700">
+                        Mulai dari <span class="text-red-600 font-bold">Rp. 58.500</span>
+                    </p>
+
+                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="border rounded-xl shadow hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=900&q=80"
+                     class="w-full h-56 object-cover rounded-t-xl" />
+
+                <div class="p-4">
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📍 Jakarta Pusat</span>
+                    </div>
+
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📅 31 Jan 26</span>
+                    </div>
+
+                    <h3 class="mt-2 text-lg font-semibold">WOD Jakarta 2026</h3>
+
+                    <p class="text-sm mt-2 text-gray-700">
+                        Mulai dari <span class="text-red-600 font-bold">Rp. 200.000</span>
+                    </p>
+
+                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="border rounded-xl shadow hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&q=80"
+                     class="w-full h-56 object-cover rounded-t-xl" />
+
+                <div class="p-4">
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📍 Jakarta Pusat</span>
+                    </div>
+
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📅 22 - 22 Nov 25</span>
+                    </div>
+
+                    <h3 class="mt-2 text-lg font-semibold">Byon Combat Showbiz Vol.6</h3>
+
+                    <p class="text-sm mt-2 text-gray-700">
+                        Mulai dari <span class="text-red-600 font-bold">Rp. 150.000</span>
+                    </p>
+
+                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="border rounded-xl shadow hover:shadow-lg transition">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                     class="w-full h-56 object-cover rounded-t-xl" />
+
+                <div class="p-4">
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📍 Bali</span>
+                    </div>
+
+                    <div class="flex items-center text-gray-600 text-sm space-x-2">
+                        <span>📅 s31 Des 25</span>
+                    </div>
+
+                    <h3 class="mt-2 text-lg font-semibold">GWK Bali Countdown 2026</h3>
+
+                    <p class="text-sm mt-2 text-gray-700">
+                        Mulai dari <span class="text-red-600 font-bold">Rp. 175.000</span>
+                    </p>
+
+                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 4 EASY STEPS SECTION -->
+<section class="w-full py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Left Title -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-16">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-3">
+                    4 Easy Steps To Buy a Ticket!
+                </h2>
+                <p class="text-gray-500">
+                    Get familiar with our 4 easy working process
+                </p>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="#" 
+               class="mt-6 md:mt-0 inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl transition">
+                Buy Ticket
+                <span class="ml-2 text-lg">→</span>
+            </a>
+        </div>
+
+        <!-- Steps Container -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-center">
+
+            <!-- Step 1 (Choose A Concert) – kamu ganti gambarnya nanti -->
+            <div class="flex flex-col items-center">
+                <img src="{{ asset('logo/date.png') }}" alt="concert" class="h-32 mb-6">
+                <h3 class="font-semibold text-lg mb-2">Choose A Concert</h3>
+                <p class="text-gray-500 text-sm">
+                    You can see concert tickets in our website and check which one is good for you.
+                </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex flex-col items-center">
+         <img src="{{ asset('logo/datete.png') }}" alt="concert" class="h-32 mb-6">
+                <h3 class="font-semibold text-lg mb-2">Choose Date & Time</h3>
+                <p class="text-gray-500 text-sm">
+                    You can check date and time of your favorite concert in our website.
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex flex-col items-center">
+                <img src="{{ asset('logo/paybil.png') }}" alt="concert" class="h-32 mb-6">
+                <h3 class="font-semibold text-lg mb-2">Pay Your Bill</h3>
+                <p class="text-gray-500 text-sm">
+                    After choosing your date and preferred seat you can pay the ticket online.
+                </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex flex-col items-center">
+               <img src="{{ asset('logo/download.png') }}" alt="concert" class="h-32 mb-6">
+                <h3 class="font-semibold text-lg mb-2">Download Your Ticket!</h3>
+                <p class="text-gray-500 text-sm">
+                    After completing checkout, download your ticket and get ready for the event!
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
@@ -229,26 +352,32 @@
         </div>
     </footer>
 
-    <script>
-    new Swiper(".myHeroSwiper", {
-        loop: true,
-        centeredSlides: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        autoplay: {
-            delay: 3000,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-</script>
+
 
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+  new Swiper(".myHeroSwiper", {
+    loop: true,
+    centeredSlides: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    autoplay: {
+      delay: 4000, // 5 detik
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
+
+
+
 </html>
