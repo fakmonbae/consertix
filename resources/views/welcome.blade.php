@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Concertix – Pemesanan Tiket Konser</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@extends('layouts.app')
+
+@section('content')
     <style>
         body {
             background: linear-gradient(135deg, #fdfdfd 0%, #f8f9fa 100%);
@@ -23,77 +13,6 @@
             background-position: center;
         }
     </style>
-</head>
-<body class="font-sans antialiased">
-
-    <!-- Header -->
-    <header class="w-full bg-gradient-to-b from-[#0d0f55] to-[#0a0c38] text-white py-4">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-
-        <!-- LEFT: Menu -->
-        <nav class="flex items-center space-x-10 text-lg font-medium">
-            <a href="#" class="hover:text-indigo-300 transition">Home</a>
-            <a href="#" class="hover:text-indigo-300 transition">Concerts</a>
-            <a href="#" class="hover:text-indigo-300 transition">Singers</a>
-        </nav>
-
-       <!-- CENTER: Logo -->
-<div class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
-    <img src="{{ asset('logo/header.png') }}" alt="logo" class="h-12">
-</div>
-
-
-        <!-- RIGHT: Cart + Login + Register -->
-        <div class="flex items-center space-x-4">
-
-            <!-- Cart Icon -->
-            <button class="text-white hover:text-indigo-300 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-                     stroke-width="1.7" stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437m0 
-                          0L6.75 12.75h10.5l2.25-6.75H5.106m0 
-                          0l-.383-1.438M6.75 12.75L7.5 15.75h9l.75-3"/>
-                </svg>
-            </button>
-
-            @guest
-                <!-- LOGIN -->
-                <a href="{{ route('login') }}"
-                    class="flex items-center space-x-2 bg-white text-indigo-700 px-5 py-2 rounded-3xl font-semibold hover:bg-gray-100 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                         stroke-width="1.7" stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 
-                              7.5 0 0115 0"/>
-                    </svg>
-                    <span>Login</span>
-                </a>
-
-                <!-- REGISTER -->
-                <a href="{{ route('register') }}"
-                    class="flex items-center space-x-2 bg-indigo-600 text-white px-5 py-2 rounded-3xl font-semibold hover:bg-indigo-700 transition">
-                    <span>Register</span>
-                </a>
-            @else
-                <!-- Jika user login -->
-                <a href="{{ route($dashboardRoute) }}"
-                    class="bg-white text-indigo-700 px-5 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
-                    Dashboard
-                </a>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit"
-                            class="bg-red-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-red-700 transition">
-                        Logout
-                    </button>
-                </form>
-            @endguest
-
-        </div>
-    </div>
-</header>
 
 
     <!-- Hero Section -->
@@ -140,25 +59,28 @@
 </section>
 
 <!-- HERO SEARCH SECTION -->
-<section class="w-full bg-gradient-to-b py-10">
+<section class="w-full bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
 
-        <!-- Search Box -->
-        <div class="bg-white rounded-3xl shadow-lg flex items-center px-6 py-4 space-x-4">
+        <!-- Search Box (opens dropdown results) -->
+        <div class="relative">
+            <div class="bg-white rounded-3xl shadow-lg flex items-center px-6 py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-gray-400 mr-3" fill="none" 
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+                </svg>
 
-            <!-- Search Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-gray-400" fill="none" 
-                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" 
-                      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
-            </svg>
+                <input id="liveSearchInput" aria-label="Search events" placeholder="Search event..."
+                    class="w-full bg-transparent focus:outline-none text-lg text-gray-700 placeholder-gray-400" />
+            </div>
 
-            <!-- Input -->
-            <input 
-                type="" 
-                placeholder="Cari concert ..."
-                class="w-full bg-transparent focus:outline-none text-lg text-gray-700 placeholder-gray-400"
-            >
+            <!-- Dropdown below the search box -->
+            <div id="liveSearchDropdown" class="hidden absolute left-0 right-0 mt-3 bg-white rounded-xl shadow-lg z-50 max-h-80 overflow-auto">
+                <div id="liveSearchResults">
+                    <div class="p-6 text-center text-gray-500">Type to search events...</div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -346,7 +268,7 @@
 </section>
 
 <!-- FAQ SECTION -->
-<section class="w-full py-20 bg-gray-50">
+<section class="w-full py-20 bg-white">
     <div class="max-w-5xl mx-auto px-6">
 
         <!-- Title -->
@@ -526,43 +448,126 @@
 
 
 
-</body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script>
-  new Swiper(".myHeroSwiper", {
-    loop: true,
-    centeredSlides: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    autoplay: {
-      delay: 4000, // 5 detik
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-</script>
-<script>
-function toggleFAQ(id) {
-    const content = document.getElementById('faq-' + id);
-    const icon = document.getElementById('icon-' + id);
 
-    if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        icon.textContent = '−';
-    } else {
-        content.classList.add('hidden');
-        icon.textContent = '+';
-    }
-}
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script>
+        new Swiper(".myHeroSwiper", {
+                loop: true,
+                centeredSlides: true,
+                slidesPerView: 1,
+                spaceBetween: 20,
+                autoplay: {
+                delay: 4000, // 5 detik
+                disableOnInteraction: false,
+                },
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                },
+        });
+        </script>
+        <script>
+        function toggleFAQ(id) {
+                const content = document.getElementById('faq-' + id);
+                const icon = document.getElementById('icon-' + id);
 
+                if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        icon.textContent = '−';
+                } else {
+                        content.classList.add('hidden');
+                        icon.textContent = '+';
+                }
+        }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 
-</html>
+        <script>
+        // Live search dropdown behavior
+        (function(){
+            const input = document.getElementById('liveSearchInput');
+            const dropdown = document.getElementById('liveSearchDropdown');
+            const resultsEl = document.getElementById('liveSearchResults');
+            let lastQuery = '';
+            let controller = null;
+
+            function openDropdown(){
+                dropdown.classList.remove('hidden');
+            }
+
+            function closeDropdown(){
+                dropdown.classList.add('hidden');
+            }
+
+            function renderResults(items){
+                if (!items || items.length === 0) {
+                    resultsEl.innerHTML = '<div class="p-6 text-center text-gray-500">No events found.</div>';
+                    return;
+                }
+
+                resultsEl.innerHTML = items.map(item => {
+                    const date = new Date(item.date).toLocaleDateString(undefined, { day:'2-digit', month:'short', year:'numeric' });
+                            // include thumbnail image on the left and organizer below
+                            return `\
+                                <a href="/concerts" class="block px-6 py-4 hover:bg-gray-50">\
+                                    <div class="flex items-start space-x-4">\
+                                        <img src="${escapeHtml(item.image_url)}" alt="" class="w-20 h-12 object-cover rounded-md flex-shrink-0">\
+                                        <div class="flex-1">\
+                                            <div class="font-semibold text-lg text-gray-900">${escapeHtml(item.title)}</div>\
+                                            <div class="text-sm text-gray-500 mt-1">${date}</div>\
+                                            <div class="text-sm text-gray-500">${escapeHtml(item.location)}</div>\
+                                            <div class="text-sm text-gray-500 mt-2">Organizer: <span class="text-gray-700 font-medium">${escapeHtml(item.organizer || '')}</span></div>\
+                                        </div>\
+                                    </div>\
+                                </a>\
+                            `;
+                }).join('');
+            }
+
+            function escapeHtml(str){
+                return String(str).replace(/[&<>"']/g, function (s) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[s]; });
+            }
+
+            function fetchResults(q){
+                if (controller) controller.abort();
+                controller = new AbortController();
+                lastQuery = q;
+                if (!q || q.length < 1) {
+                    resultsEl.innerHTML = '<div class="p-6 text-center text-gray-500">Type to search events...</div>';
+                    return;
+                }
+
+                fetch("{{ route('concerts.search') }}?q=" + encodeURIComponent(q), { signal: controller.signal })
+                    .then(r => r.json())
+                    .then(data => {
+                        if (lastQuery !== q) return;
+                        renderResults(data);
+                        openDropdown();
+                    })
+                    .catch(err => {
+                        if (err.name === 'AbortError') return;
+                        console.error(err);
+                    });
+            }
+
+            input && input.addEventListener('focus', function(){
+                if (input.value && input.value.length > 0) fetchResults(input.value);
+                else openDropdown();
+            });
+
+            input && input.addEventListener('input', function(e){ fetchResults(e.target.value); });
+
+            // close when clicking outside
+            document.addEventListener('click', function(e){
+                const within = e.target.closest && (e.target.closest('#liveSearchDropdown') || e.target.closest('#liveSearchInput'));
+                if (!within) closeDropdown();
+            });
+
+            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDropdown(); });
+        })();
+        </script>
+@endsection

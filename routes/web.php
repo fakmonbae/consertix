@@ -8,6 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Halaman Concerts
+use App\Http\Controllers\ConcertController;
+Route::get('/concerts', [ConcertController::class, 'index'])->name('concerts.index');
+Route::get('/concerts/search', [ConcertController::class, 'search'])->name('concerts.search');
+
 // ============================
 // DASHBOARD MULTI-ROLE
 // ============================
