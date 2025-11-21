@@ -341,16 +341,187 @@
 
         </div>
 
+
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="w-full py-20 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-6">
+
+        <!-- Title -->
+        <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">
+            Frequently Asked Questions
+        </h2>
+        <p class="text-center text-gray-600 mb-12">
+            Temukan jawaban cepat untuk pertanyaan umum seputar layanan kami.
+        </p>
+
+        <!-- FAQ Container -->
+        <div class="space-y-4">
+
+            <!-- Item 1 -->
+            <div class="border rounded-xl bg-white">
+                <button onclick="toggleFAQ(1)"
+                    class="w-full flex justify-between items-center px-6 py-4 text-left font-semibold text-gray-800">
+                    Cara Membeli Tiket di Concertix
+                    <span id="icon-1">+</span>
+                </button>
+                <div id="faq-1" class="hidden px-6 pb-4 text-gray-600">
+                    Kamu bisa memilih konser, memilih jadwal, dan langsung melakukan pembayaran melalui platform kami.
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="border rounded-xl bg-white">
+                <button onclick="toggleFAQ(2)"
+                    class="w-full flex justify-between items-center px-6 py-4 text-left font-semibold text-gray-800">
+                    Informasi Email Konfirmasi
+                    <span id="icon-2">+</span>
+                </button>
+                <div id="faq-2" class="hidden px-6 pb-4 text-gray-600">
+                    Email konfirmasi akan dikirim segera setelah pembayaran berhasil diproses.
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="border rounded-xl bg-white">
+                <button onclick="toggleFAQ(3)"
+                    class="w-full flex justify-between items-center px-6 py-4 text-left font-semibold text-gray-800">
+                    Kebijakan Pembatalan dan Pengembalian Dana
+                    <span id="icon-3">+</span>
+                </button>
+                <div id="faq-3" class="hidden px-6 pb-4 text-gray-600">
+                    Pembatalan tiket mengikuti kebijakan promoter acara masing-masing.
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="border rounded-xl bg-white">
+                <button onclick="toggleFAQ(4)"
+                    class="w-full flex justify-between items-center px-6 py-4 text-left font-semibold text-gray-800">
+                    Batas Waktu Pembayaran
+                    <span id="icon-4">+</span>
+                </button>
+                <div id="faq-4" class="hidden px-6 pb-4 text-gray-600">
+                    Kamu memiliki waktu 15 menit untuk menyelesaikan pembayaran setelah checkout.
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="border rounded-xl bg-white">
+                <button onclick="toggleFAQ(5)"
+                    class="w-full flex justify-between items-center px-6 py-4 text-left font-semibold text-gray-800">
+                    Penukaran E-Ticket
+                    <span id="icon-5">+</span>
+                </button>
+                <div id="faq-5" class="hidden px-6 pb-4 text-gray-600">
+                    E-ticket dapat langsung digunakan untuk masuk ke venue tanpa perlu dicetak.
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </section>
 
 
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
+    {{-- <footer class="bg-gray-900 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p>&copy; {{ date('Y') }} Concertix. All rights reserved.</p>
         </div>
-    </footer>
+    </footer> --}}
+    <!-- FOOTER SECTION -->
+<footer class="w-full bg-gray-900 text-white py-14">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+        <!-- Logo + Tagline -->
+        <div>
+            <div class="flex items-center space-x-3 mb-3">
+                <img src="{{ asset('logo/header.png') }}" class="h-10">
+            </div>
+            <p class="text-gray-300 text-sm">
+                Your Professional Ticketing Partner
+            </p>
+        </div>
+
+        <!-- Tentang Kami -->
+        <div>
+            <h3 class="font-semibold text-lg mb-3">Tentang Kami</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li><a href="#" class="hover:text-white transition">Tentang Kami</a></li>
+                <li><a href="#" class="hover:text-white transition">Panduan Penyelenggara</a></li>
+                <li><a href="#" class="hover:text-white transition">Hubungi Kami</a></li>
+                <li><a href="#" class="hover:text-white transition">Biaya</a></li>
+            </ul>
+        </div>
+
+        <!-- Informasi -->
+        <div>
+            <h3 class="font-semibold text-lg mb-3">Informasi</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li><a href="#" class="hover:text-white transition">Syarat & Ketentuan</a></li>
+                <li><a href="#" class="hover:text-white transition">Kebijakan Privasi & Pemrosesan Data</a></li>
+                <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                <li><a href="#" class="hover:text-white transition">Tiket Gelang</a></li>
+            </ul>
+        </div>
+
+        <!-- Kategori -->
+        <div>
+            <h3 class="font-semibold text-lg mb-3">Kategori Event</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li><a href="#" class="hover:text-white transition">Musik</a></li>
+                <li><a href="#" class="hover:text-white transition">Pameran</a></li>
+                <li><a href="#" class="hover:text-white transition">Wahana</a></li>
+                <li><a href="#" class="hover:text-white transition">Olahraga</a></li>
+                <li><a href="#" class="hover:text-white transition">Semua Kategori</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto mt-10 border-t border-gray-500/30"></div>
+
+    <!-- Bottom Section -->
+    <div class="max-w-7xl mx-auto px-6 mt-6 flex flex-col md:flex-row items-center justify-between">
+
+        <p class="text-gray-300 text-sm">
+            © 2025 Concertix.
+        </p>
+
+        <div class="flex space-x-4 text-xl mt-4 md:mt-0">
+
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="hover:text-gray-200 transition">
+                <i class="fab fa-facebook"></i>
+            </a>
+
+        </div>
+
+    </div>
+</footer>
+
+
 
 
 
@@ -377,7 +548,21 @@
     },
   });
 </script>
+<script>
+function toggleFAQ(id) {
+    const content = document.getElementById('faq-' + id);
+    const icon = document.getElementById('icon-' + id);
 
+    if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.textContent = '−';
+    } else {
+        content.classList.add('hidden');
+        icon.textContent = '+';
+    }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 
 
 </html>
