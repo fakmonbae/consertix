@@ -36,3 +36,16 @@ header {
 .swiper-button-prev {
   left: 20px;
 }
+
+.search-home {
+      border-color: #ffffff !important;
+    border-width: 0px !important;
+}
+
+input:focus,
+textarea:focus {
+  outline: none; 
+  border-color: #ffffff; /* Ubah warna border utama */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25); /* Tambahkan efek glow tipis */
+}
+

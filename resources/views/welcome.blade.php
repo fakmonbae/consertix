@@ -42,6 +42,12 @@
                          class="w-full h-[430px] object-cover rounded-3xl" />
                 </div>
 
+                 <!-- Slide 4 -->
+                <div class="swiper-slide">
+                                    <img src="{{ asset('logo/banner1.png') }}" alt="concert"
+                         class="w-full h-[430px] object-cover rounded-3xl" />
+                </div>
+
             </div>
 
             <!-- LEFT Arrow -->
@@ -72,7 +78,7 @@
                 </svg>
 
                 <input id="liveSearchInput" aria-label="Search events" placeholder="Search event..."
-                    class="w-full bg-transparent focus:outline-none text-lg text-gray-700 placeholder-gray-400" />
+                    class="w-full bg-transparent focus:outline-none text-lg text-gray-700 placeholder-gray-400 search-home" />
             </div>
 
             <!-- Dropdown below the search box -->
@@ -93,7 +99,7 @@
         <!-- Header -->
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-3xl font-bold text-gray-900">Event Terbaru</h2>
-            <a href="#" class="text-indigo-600 font-semibold hover:underline">Lihat semua</a>
+            <a href="{{ route('concerts.index') }}" class="text-indigo-600 font-semibold hover:underline">Lihat semua</a>
         </div>
 
         <!-- Event List -->
@@ -215,7 +221,7 @@
             </div>
 
             <!-- CTA Button -->
-            <a href="#" 
+            <a href="{{ route('concerts.index') }}" 
                class="mt-6 md:mt-0 inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl transition">
                 Buy Ticket
                 <span class="ml-2 text-lg">→</span>
