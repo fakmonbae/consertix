@@ -5,13 +5,18 @@ use Illuminate\Support\Facades\Route;
 
 // Halaman Welcome
 Route::get('/', function () {
-    return view('welcome');
+    // Pass recent concerts to the welcome view so the event list can render.
+    $concerts = \App\Models\Concert::orderBy('date', 'desc')->limit(8)->get();
+
+    return view('welcome', compact('concerts'));
 });
 
 // Halaman Concerts
 use App\Http\Controllers\ConcertController;
 Route::get('/concerts', [ConcertController::class, 'index'])->name('concerts.index');
 Route::get('/concerts/search', [ConcertController::class, 'search'])->name('concerts.search');
+// Concert detail
+Route::get('/concerts/{concert}', [ConcertController::class, 'show'])->name('concerts.show');
 
 // ============================
 // DASHBOARD MULTI-ROLE

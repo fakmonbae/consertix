@@ -24,7 +24,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 
             @forelse($concerts as $concert)
-                <div class="border rounded-xl shadow hover:shadow-lg transition">
+                <a href="{{ route('concerts.show', $concert->id) }}" class="block border rounded-xl shadow hover:shadow-lg transition overflow-hidden">
                     <img src="{{ $concert->image_url }}" class="w-full h-56 object-cover rounded-t-xl" />
 
                     <div class="p-4">
@@ -44,7 +44,7 @@
 
                         <span class="text-green-600 font-medium text-sm">{{ $concert->status }}</span>
                     </div>
-                </div>
+                </a>
             @empty
                 <div class="col-span-1 sm:col-span-2 md:col-span-4">
                     <div class="bg-white rounded-xl shadow p-8 text-center">

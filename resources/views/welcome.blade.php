@@ -91,115 +91,47 @@
 
     </div>
 </section>
-
 <!-- EVENT TERBARU SECTION -->
 <section class="w-full bg-white py-14">
     <div class="max-w-7xl mx-auto px-6">
 
-        <!-- Header -->
+        <!-- Header with search -->
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-3xl font-bold text-gray-900">Event Terbaru</h2>
-            <a href="{{ route('concerts.index') }}" class="text-indigo-600 font-semibold hover:underline">Lihat semua</a>
         </div>
-
-        <!-- Event List -->
+        
+<!-- Event List -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 
-            <!-- CARD 1 -->
-            <div class="border rounded-xl shadow hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=900&q=80"
-                     class="w-full h-56 object-cover rounded-t-xl" />
+            @forelse($concerts as $concert)
+                <a href="{{ route('concerts.show', $concert->id) }}" class="block border rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+                    <img src="{{ $concert->image_url }}" class="w-full h-56 object-cover rounded-t-xl" />
 
-                <div class="p-4">
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📍 Jakarta Timur</span>
+                    <div class="p-4">
+                        <div class="flex items-center text-gray-600 text-sm space-x-2">
+                            <span>📍 {{ $concert->location }}</span>
+                        </div>
+
+                        <div class="flex items-center text-gray-600 text-sm space-x-2">
+                            <span>📅 {{ \Illuminate\Support\Carbon::parse($concert->date)->format('d M Y') }}</span>
+                        </div>
+
+                        <h3 class="mt-2 text-lg font-semibold">{{ $concert->title }}</h3>
+
+                        <p class="text-sm mt-2 text-gray-700">
+                            Mulai dari <span class="text-red-600 font-bold">Rp. {{ number_format($concert->price, 0, ',', '.') }}</span>
+                        </p>
+
+                        <span class="text-green-600 font-medium text-sm">{{ $concert->status }}</span>
                     </div>
-
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📅 24 Jan 26</span>
+                </a>
+            @empty
+                <div class="col-span-1 sm:col-span-2 md:col-span-4">
+                    <div class="bg-white rounded-xl shadow p-8 text-center">
+                        <span class="text-gray-400">(Belum ada data konser)</span>
                     </div>
-
-                    <h3 class="mt-2 text-lg font-semibold">FREEDOM EXODUS</h3>
-
-                    <p class="text-sm mt-2 text-gray-700">
-                        Mulai dari <span class="text-red-600 font-bold">Rp. 58.500</span>
-                    </p>
-
-                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
                 </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="border rounded-xl shadow hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=900&q=80"
-                     class="w-full h-56 object-cover rounded-t-xl" />
-
-                <div class="p-4">
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📍 Jakarta Pusat</span>
-                    </div>
-
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📅 31 Jan 26</span>
-                    </div>
-
-                    <h3 class="mt-2 text-lg font-semibold">WOD Jakarta 2026</h3>
-
-                    <p class="text-sm mt-2 text-gray-700">
-                        Mulai dari <span class="text-red-600 font-bold">Rp. 200.000</span>
-                    </p>
-
-                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
-                </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="border rounded-xl shadow hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&q=80"
-                     class="w-full h-56 object-cover rounded-t-xl" />
-
-                <div class="p-4">
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📍 Jakarta Pusat</span>
-                    </div>
-
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📅 22 - 22 Nov 25</span>
-                    </div>
-
-                    <h3 class="mt-2 text-lg font-semibold">Byon Combat Showbiz Vol.6</h3>
-
-                    <p class="text-sm mt-2 text-gray-700">
-                        Mulai dari <span class="text-red-600 font-bold">Rp. 150.000</span>
-                    </p>
-
-                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
-                </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="border rounded-xl shadow hover:shadow-lg transition">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-                     class="w-full h-56 object-cover rounded-t-xl" />
-
-                <div class="p-4">
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📍 Bali</span>
-                    </div>
-
-                    <div class="flex items-center text-gray-600 text-sm space-x-2">
-                        <span>📅 s31 Des 25</span>
-                    </div>
-
-                    <h3 class="mt-2 text-lg font-semibold">GWK Bali Countdown 2026</h3>
-
-                    <p class="text-sm mt-2 text-gray-700">
-                        Mulai dari <span class="text-red-600 font-bold">Rp. 175.000</span>
-                    </p>
-
-                    <span class="text-green-600 font-medium text-sm">Tiket Tersedia</span>
-                </div>
-            </div>
+            @endforelse
 
         </div>
     </div>
@@ -519,7 +451,7 @@
                     const date = new Date(item.date).toLocaleDateString(undefined, { day:'2-digit', month:'short', year:'numeric' });
                             // include thumbnail image on the left and organizer below
                             return `\
-                                <a href="/concerts" class="block px-6 py-4 hover:bg-gray-50">\
+                                            <a href="/concerts/${item.id}" class="block px-6 py-4 hover:bg-gray-50">\
                                     <div class="flex items-start space-x-4">\
                                         <img src="${escapeHtml(item.image_url)}" alt="" class="w-20 h-12 object-cover rounded-md flex-shrink-0">\
                                         <div class="flex-1">\

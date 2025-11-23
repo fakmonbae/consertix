@@ -51,4 +51,12 @@ class ConcertController extends Controller
 
         return response()->json($results);
     }
+
+    /**
+     * Display a single concert detail.
+     */
+    public function show(Concert $concert)
+    {
+        return view('concerts.show', compact('concert'));
+    }
 }
