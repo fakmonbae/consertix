@@ -32,6 +32,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', function () {
         return view('dashboard.user');
     })->name('user.dashboard');
+
+    // Riwayat pesanan (history) untuk user yang sudah login
+    Route::get('/history', function () {
+        return view('history');
+    })->name('history');
 });
 
 // ============================

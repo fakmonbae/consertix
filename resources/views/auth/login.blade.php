@@ -49,7 +49,7 @@
         </div>
 
         <div class="text-center text-sm text-gray-500 mt-2">
-            Don't have an account? <a href="{{ route('register') }}" class="text-indigo-600">Sign Up</a>
+            If you don't have an account, please <a href="{{ route('register') }}" class="text-indigo-600">register</a>.
         </div>
     </form>
 </x-guest-layout>

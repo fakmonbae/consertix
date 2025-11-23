@@ -47,11 +47,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // Redirect by role after register
+        // Redirect by role after register: admin/eo -> their dashboards, others -> welcome
         return match ($user->role) {
             'admin' => redirect()->route('admin.dashboard'),
             'eo'    => redirect()->route('eo.dashboard'),
-            default => redirect()->route('user.dashboard'),
+            default => redirect('/'),
         };
     }
 }

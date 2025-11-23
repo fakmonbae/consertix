@@ -38,11 +38,11 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         $user = Auth::user();
 
-        // Redirect by role after login
+        // Redirect by role after login: admin/eo -> their dashboards, others -> welcome
         return match ($user->role) {
             'admin' => redirect()->route('admin.dashboard'),
             'eo'    => redirect()->route('eo.dashboard'),
-            default => redirect()->route('user.dashboard'),
+            default => redirect('/'),
         };
     }
 

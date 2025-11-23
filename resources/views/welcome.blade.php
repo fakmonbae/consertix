@@ -16,7 +16,7 @@
 
 
     <!-- Hero Section -->
-   <section class="w-full py-10 bg-gradient-to-b from-[#0d0f55] to-[#0a0c38]">
+    <section class="w-full py-10 bg-gradient-to-b from-[#0d0f55] to-[#0a0c38]">
     <div class="max-w-7xl mx-auto px-4">
 
         <!-- Slider Container -->

@@ -24,8 +24,8 @@ header {
 /* Warna icon panah */
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 20px;
-  color: rgb(0, 0, 0);
+  font-size: 20px !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 /* Posisi tombol */

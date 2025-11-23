@@ -29,7 +29,9 @@
                     </nav>
                     <!-- CENTER: Logo -->
                     <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
-                        <img src="{{ asset('logo/header.png') }}" alt="logo" class="h-12">
+                        <a href="{{ Auth::check() ? route(Auth::user()->role . '.dashboard') : url('/') }}">
+                            <img src="{{ asset('logo/header.png') }}" alt="logo" class="h-12">
+                        </a>
                     </div>
                     <!-- RIGHT: Cart + Login + Register -->
                     <div class="flex items-center space-x-4">
@@ -40,28 +42,43 @@
                             </svg>
                         </button>
                         @guest
-                            <!-- LOGIN -->
-                            <a href="{{ route('login') }}" class="flex items-center space-x-2 bg-white text-indigo-700 px-5 py-2 rounded-3xl font-semibold hover:bg-gray-100 transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-5 h-5">
+                            <!-- Single Login/Register CTA -->
+                            <a href="{{ route('login') }}" class="flex items-center space-x-2 bg-white text-indigo-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0"/>
                                 </svg>
-                                <span>Login</span>
-                            </a>
-                            <!-- REGISTER -->
-                            <a href="{{ route('register') }}" class="flex items-center space-x-2 bg-indigo-600 text-white px-5 py-2 rounded-3xl font-semibold hover:bg-indigo-700 transition">
-                                <span>Register</span>
+                                <span class="text-sm">Login / Register</span>
                             </a>
                         @else
-                            <!-- Jika user login -->
-                            <a href="{{ route($dashboardRoute) }}" class="bg-white text-indigo-700 px-5 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
-                                Dashboard
-                            </a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="bg-red-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-red-700 transition">
-                                    Logout
-                                </button>
-                            </form>
+                            <!-- Jika user login: tampilkan dropdown dengan nama, history, dan logout -->
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <!-- Match guest CTA size/style: user name + icon in a pill -->
+                                    <button class="flex items-center space-x-2 bg-white text-indigo-700 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+                                        <!-- user icon (same as guest) -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" class="w-5 h-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0"/>
+                                        </svg>
+
+                                        <span class="text-sm">{{ Auth::user()->name }}</span>
+                                    </button>
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <x-dropdown-link :href="route('history')">
+                                        {{ __('History') }}
+                                    </x-dropdown-link>
+
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <x-dropdown-link href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </form>
+                                </x-slot>
+                            </x-dropdown>
                         @endguest
                     </div>
                 </div>

@@ -9,12 +9,20 @@ class LoginResponse implements LoginResponseContract
 {
     public function toResponse($request)
     {
-        $user = Auth::user();
+        // Determine role safely and choose destination:
+        $role = Auth::user()?->role ?? null;
 
-        return match ($user->role) {
-            'admin' => redirect()->route('admin.dashboard'),
-            'eo'    => redirect()->route('eo.dashboard'),
-            default => redirect()->route('user.dashboard'),
+        $destination = match ($role) {
+            'admin' => route('admin.dashboard'),
+            'eo'    => route('eo.dashboard'),
+            default => url('/'),
         };
+
+        // Support AJAX clients that expect JSON
+        if ($request->wantsJson()) {
+            return response()->json(['redirect' => $destination]);
+        }
+
+        return redirect($destination);
     }
 }
