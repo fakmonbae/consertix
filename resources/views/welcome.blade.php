@@ -123,6 +123,12 @@
                         </p>
 
                         <span class="text-green-600 font-medium text-sm">{{ $concert->status }}</span>
+                    
+                        <!-- Organizer (logo + name) -->
+                        <div class="border-t mt-4 pt-4 flex items-center space-x-3">
+                            <img src="{{ $concert->image_url }}" alt="{{ $concert->organizer }}" class="h-10 w-10 rounded-full object-cover"> 
+                            <div class="text-sm text-gray-700 font-medium">{{ $concert->organizer }}</div>
+                        </div>
                     </div>
                 </a>
             @empty
