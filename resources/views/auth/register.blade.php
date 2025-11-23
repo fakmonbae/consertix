@@ -1,5 +1,10 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <div class="mb-6">
+        <h1 class="text-2xl font-bold">Create an account</h1>
+        <p class="text-sm text-gray-500">Sign up to access all features</p>
+    </div>
+
+    <form method="POST" action="{{ route('register') }}" class="space-y-4">
         @csrf
 
         {{-- Name --}}
@@ -8,7 +13,7 @@
             <x-text-input id="name" 
                 name="name" 
                 type="text" 
-                class="block mt-1 w-full"
+                class="block mt-1 w-full rounded-full px-4 py-3"
                 :value="old('name')" 
                 required 
                 autofocus 
@@ -17,12 +22,12 @@
         </div>
 
         {{-- Email --}}
-        <div class="mt-4">
+        <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" 
                 name="email" 
                 type="email" 
-                class="block mt-1 w-full"
+                class="block mt-1 w-full rounded-full px-4 py-3"
                 :value="old('email')" 
                 required 
                 autocomplete="email" />
@@ -30,12 +35,12 @@
         </div>
 
         {{-- Phone --}}
-        <div class="mt-4">
+        <div>
             <x-input-label for="phone" :value="__('Phone')" />
             <x-text-input id="phone" 
                 name="phone" 
                 type="tel"
-                class="block mt-1 w-full"
+                class="block mt-1 w-full rounded-full px-4 py-3"
                 :value="old('phone')" 
                 required 
                 autocomplete="tel" />
@@ -43,12 +48,12 @@
         </div>
 
         {{-- Role --}}
-        <div class="mt-4">
+        <div>
             <x-input-label for="role" :value="__('Daftar sebagai')" />
             <select id="role" 
                 name="role" 
                 required
-                class="block mt-1 w-full rounded-md border-gray-300 dark:bg-gray-800 dark:text-white dark:border-gray-600">
+                class="block mt-1 w-full rounded-full px-4 py-3 border-gray-300">
                 <option value="" disabled {{ old('role') ? '' : 'selected' }}>-- Pilih Peran --</option>
                 <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
                 <option value="eo" {{ old('role') == 'eo' ? 'selected' : '' }}>Event Organizer</option>
@@ -57,24 +62,24 @@
         </div>
 
         {{-- Password --}}
-        <div class="mt-4">
+        <div>
             <x-input-label for="password" :value="__('Password')" />
             <x-text-input id="password" 
                 name="password" 
                 type="password"
-                class="block mt-1 w-full" 
+                class="block mt-1 w-full rounded-full px-4 py-3" 
                 required 
                 autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         {{-- Confirm Password --}}
-        <div class="mt-4">
+        <div>
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
             <x-text-input id="password_confirmation" 
                 name="password_confirmation"
                 type="password" 
-                class="block mt-1 w-full"
+                class="block mt-1 w-full rounded-full px-4 py-3"
                 required 
                 autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -83,11 +88,9 @@
         {{-- Submit --}}
         <div class="flex items-center justify-end mt-4">
             <a href="{{ route('login') }}"
-                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md">
-                {{ __('Already registered?') }}
-            </a>
+                class="text-sm text-gray-600 hover:text-gray-900">{{ __('Already registered?') }}</a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-4 w-full py-3 rounded-full">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
